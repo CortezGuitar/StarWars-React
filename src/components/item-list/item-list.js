@@ -5,8 +5,8 @@ import './item-list.css';
 export default class ItemList extends Component {
   render() {
     return (
-      <div className="card rounded lead mb-3">
-        <ul className="list-group list-group-flush m-2">
+      <div className="card rounded lead w-25">
+        <ul className="list-group list-group-flush my-auto">
           <a href="#" className="list-group-item list-group-item-action">
             Luke Skywalker
           </a>
