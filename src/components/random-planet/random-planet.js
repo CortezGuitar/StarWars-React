@@ -20,6 +20,10 @@ export default class RandomPlanet extends Component {
     this.interval = setInterval(this.updatePlanet, 5000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   onPlanetLoaded = planet => this.setState({ planet, loading: false });
 
   onError = err => this.setState({ error: true, loading: false });
@@ -47,7 +51,7 @@ export default class RandomPlanet extends Component {
       planetView = (
         <React.Fragment>
           <img
-            className="card-image m-3 image-fluid"
+            className="card-image m-3 image-fluid planet-img"
             src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
             alt="planet"
           />
