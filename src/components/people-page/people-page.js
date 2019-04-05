@@ -15,7 +15,6 @@ export default class PeoplePage extends Component {
   };
 
   onPersonSelected = id => {
-    console.log(id);
     this.setState({ selectedPerson: id });
   };
 
@@ -32,7 +31,7 @@ export default class PeoplePage extends Component {
       />
     );
 
-    const itemDetails = <ItemDetails personId={this.state.selectedPerson} />;
+    const itemDetails = <ItemDetails itemId={this.state.selectedPerson} />;
 
     return (
       <ErrorBoundry>

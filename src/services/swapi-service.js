@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export default class swapiService {
   _apiBase = `https://swapi.co/api/`;
+  _imageBase = `https://starwars-visualguide.com/assets/img/`;
 
   async getResource(url) {
     try {
@@ -22,12 +23,12 @@ export default class swapiService {
     return swapiService._transformPerson(person);
   };
 
-  getAllStarShips = async () => {
+  getAllStarships = async () => {
     const resp = await this.getResource(`starships`);
     return resp.results.map(result => swapiService._transformStarship(result));
   };
 
-  getStarShip = async id => {
+  getStarship = async id => {
     const starship = await this.getResource(`starships/${id}`);
     return swapiService._transformStarship(starship);
   };
@@ -41,6 +42,12 @@ export default class swapiService {
     const planet = await this.getResource(`planets/${id}`);
     return swapiService._transformPlanet(planet);
   };
+
+  getPersonImage = ({ id }) => `${this._imageBase}characters/${id}.jpg`;
+
+  getStarshipImage = ({ id }) => `${this._imageBase}starships/${id}.jpg`;
+
+  getPlanetImage = ({ id }) => `${this._imageBase}planets/${id}.jpg`;
 
   static _extractId(item) {
     const idRegExp = /\/([0-9]*)\/$/;
