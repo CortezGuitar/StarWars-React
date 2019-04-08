@@ -7,6 +7,15 @@ import RandomPlanet from '../random-planet';
 import ItemDetails, { Record } from '../item-details';
 import swapiService from '../../services/swapi-service';
 import Row from '../row';
+import ItemList from '../item-list';
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+  PersonList,
+  PlanetList,
+  StarshipList
+} from '../containers';
 
 export default class App extends Component {
   swapiService = new swapiService();
@@ -52,15 +61,21 @@ export default class App extends Component {
     return (
       <div className="container mb-3">
         <Header />
-        {/* {planet}
+        {planet}
         <button
           className="btn btn-lg btn-warning m-3"
           onClick={this.toggleRandomPlanet}
         >
           Toggle Random Planet View
-        </button> */}
+        </button>
 
-        <Row left={personDetails} right={starhipDetails} />
+        <PersonDetails itemId="11" />
+        <StarshipDetails itemId="9" />
+        <PlanetDetails itemId="5" />
+
+        <PersonList />
+        <StarshipList />
+        <PlanetList />
       </div>
     );
   }

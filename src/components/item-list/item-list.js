@@ -1,24 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './item-list.css';
 
-import Spinner from '../spinner';
-
-export default class ItemList extends Component {
-  state = {
-    itemList: null
-  };
-
-  componentDidMount() {
-    const { getData } = this.props;
-
-    getData().then(itemList => this.setState({ itemList }));
-  }
-
-  renderItems(arr) {
+const ItemList = props => {
+  const renderItems = arr => {
     return arr.map(item => {
       const { id } = item;
-      const label = this.props.renderItem(item);
+      const label = props.renderItem(item);
 
       return (
         <li
@@ -31,21 +19,16 @@ export default class ItemList extends Component {
         </li>
       );
     });
-  }
+  };
 
-  render() {
-    const { itemList } = this.state;
+  const { data } = props;
+  const items = renderItems(data);
 
-    if (!itemList) {
-      return <Spinner />;
-    }
+  return (
+    <div className="card rounded lead border-secondary mb-2">
+      <ul className="list-group list-group-flush">{items}</ul>
+    </div>
+  );
+};
 
-    const items = this.renderItems(itemList);
-
-    return (
-      <div className="card rounded lead border-secondary mb-2">
-        <ul className="list-group list-group-flush">{items}</ul>
-      </div>
-    );
-  }
-}
+export default ItemList;
