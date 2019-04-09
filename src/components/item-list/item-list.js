@@ -4,6 +4,7 @@ import './item-list.css';
 
 const ItemList = props => {
   const renderItems = arr => {
+    arr.length = 6;
     return arr.map(item => {
       const { id } = item;
       const label = props.renderItem(item);
@@ -13,7 +14,7 @@ const ItemList = props => {
           key={id}
           href="#"
           className="list-group-item list-group-item-action"
-          onClick={() => this.props.onPersonSelected(id)}
+          onClick={() => props.onItemSelected(id)}
         >
           {label}
         </li>
@@ -25,7 +26,7 @@ const ItemList = props => {
   const items = renderItems(data);
 
   return (
-    <div className="card rounded lead border-secondary mb-2">
+    <div className="card rounded lead border-secondary">
       <ul className="list-group list-group-flush">{items}</ul>
     </div>
   );

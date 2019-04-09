@@ -38,32 +38,42 @@ export default class ItemDetails extends Component {
   }
 
   render() {
-    const { item, image } = this.state;
+    const { item, image, loading } = this.state;
 
-    if (!this.state.item && !this.state.loading) {
-      return <span className="h3 mx-auto">Select an item from a list</span>;
-    } else if (this.state.loading) {
-      return <Spinner />;
+    let itemView = (
+      <span className="h3 mx-auto align-self-center">
+        Select an item from a list
+      </span>
+    );
+
+    if (loading) {
+      itemView = <Spinner />;
+    } else if (item && image) {
+      itemView = (
+        <React.Fragment>
+          <div className="item-image-div">
+            <img
+              className="card-img m-3 img-fluid item-img"
+              src={image}
+              alt="planet"
+            />
+          </div>
+
+          <div className="card-body lead item-card-body">
+            <h4 className="card-title text-info">{item.name}</h4>
+            <ul className="list-group list-group-flush">
+              {React.Children.map(this.props.children, child => {
+                return React.cloneElement(child, { item });
+              })}
+            </ul>
+          </div>
+        </React.Fragment>
+      );
     }
 
     return (
-      <div className="card rounded border-secondary d-flex flex-row ">
-        <div className="item-image-div">
-          <img
-            className="card-img m-3 img-fluid item-img"
-            src={image}
-            alt="planet"
-          />
-        </div>
-
-        <div className="card-body lead align-self-center item-card-body">
-          <h4 className="card-title">{item.name}</h4>
-          <ul className="list-group list-group-flush">
-            {React.Children.map(this.props.children, child => {
-              return React.cloneElement(child, { item });
-            })}
-          </ul>
-        </div>
+      <div className="card rounded border-secondary d-flex flex-row h-100">
+        {itemView}
       </div>
     );
   }
