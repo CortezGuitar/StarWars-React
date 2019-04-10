@@ -1,5 +1,5 @@
 .navbar-list {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .navbar-list li {
@@ -7,5 +7,7 @@
 }
 
 .brand {
+  background: url('./star.png');
+  background-size: cover;
   height: 10rem;
 }

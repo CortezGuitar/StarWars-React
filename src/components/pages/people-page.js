@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Row from '../row';
 import { PersonDetails, PersonList } from '../containers/';
 
-export default class PeoplePage extends Component {
-  state = {
-    selectedItem: null
-  };
+const PeoplePage = ({ history, match }) => {
+  const { id } = match.params;
 
-  onItemSelected = selectedItem => {
-    this.setState({ selectedItem });
-  };
-
-  render() {
-    const { selectedItem } = this.state;
-
-    return (
+  return (
+    <React.Fragment>
+      <h2 className="text-center mb-3 text-success">People</h2>
       <Row
-        left={<PersonList onItemSelected={this.onItemSelected} />}
-        right={<PersonDetails itemId={selectedItem} />}
+        left={<PersonList onItemSelected={id => history.push(id)} />}
+        right={<PersonDetails itemId={id} />}
       />
-    );
-  }
-}
+    </React.Fragment>
+  );
+};
+
+export default PeoplePage;

@@ -1,35 +1,42 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.css';
-import icon from './star.png';
 
 export default class header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-md d-flex justify-content-between mb-3">
-        <h3>
-          <a className="display-4 nav-link p-0" href="http://localhost:3000/">
-            <span>
-              <img src={icon} alt="death star" className="brand" />
-            </span>{' '}
-            StarW DB
-          </a>
-        </h3>
+      <nav className="navbar navbar-expand-lg d-flex justify-content-between mb-3">
+        <h1 className="align-items-center brand">
+          <Link to="/" className="nav-link">
+            <span className="display-4">StarW DB</span>
+          </Link>
+        </h1>
         <ul className="navbar-nav navbar-list">
           <li className="nav-item">
-            <a className="nav-link" href="http://localhost:3000/">
+            <Link to="/people/" className="nav-link">
               People
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="http://localhost:3000/">
+            <Link to="/planets/" className="nav-link">
               Planets
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="http://localhost:3000/">
+            <Link to="/starships/" className="nav-link">
               Starships
-            </a>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/secret" className="nav-link">
+              Secret
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
           </li>
         </ul>
       </nav>

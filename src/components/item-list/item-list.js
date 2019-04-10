@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './item-list.css';
 
@@ -27,9 +28,18 @@ const ItemList = props => {
 
   return (
     <div className="card rounded lead border-secondary">
-      <ul className="list-group list-group-flush">{items}</ul>
+      <ul className="list-group list-group-flush item-list">{items}</ul>
     </div>
   );
+};
+
+ItemList.defaultProps = {
+  onItemSelected: () => {}
+};
+
+ItemList.propTypes = {
+  onItemSelected: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default ItemList;

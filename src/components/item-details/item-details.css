@@ -1,10 +1,11 @@
 .item-image-div {
   height: 18.5rem;
+  width: 45%;
 }
 
 .item-img {
   border-radius: 1rem;
-  width: 12rem;
+  width: 80%;
 }
 
 .item-card-body {
